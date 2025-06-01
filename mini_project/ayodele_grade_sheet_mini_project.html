@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+		<head>
+
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+
+			<title>Grade Sheet</title>
+
+			<link rel="stylesheet" type="text/css" href="bootstrap.css">
+			<link rel="stylesheet" type="text/css" href="bootstrap.css.map">
+
+			<style>
+				.score, .grade{
+					width: 300px;
+					height: 40px;
+					text-align: center;
+				}
+
+				.com {
+					min-height: 60px;
+					flex-grow: 1;
+					width: 25%;
+					text-align: center;
+					background-color: black;
+					color: ghostwhite;
+					background-color: rgba(0, 0, 0, 0.6);
+				}
+
+				.hdr {
+					text-align: center;
+				}
+
+			</style>
+		</head>
+
+		<body>
+			<div class="container">
+				<div><h1>PROJECT GRADE SHEET</h1></div>
+				<div class="table1">
+					<table class="table table-success mt-5 table-responsive table-bordered">
+						<thead class="head">
+							<tr>
+								<th>Subject</th>
+								<th class="hdr" >Score</th>
+								<th class="hdr">Grade</th>
+							</tr>
+						</thead>
+
+						<tbody class="body">
+							<tr>
+								<th>English</th>
+								<td>
+									<div class="row g-3 align-items-center">
+								  		<div class="col-auto">
+									    <input type="text" id="scoreEng" class="form-control mx-5 score" aria-describedby="scoreEng" onchange="gradeSheet(true)">
+									  </div>
+									</div>
+								</td>
+								<td>
+									<div class="row g-3 align-items-center justify-content-center">
+								  		<div class="col-auto">
+								  			<p id="gradeEng" class="form-control mx-5 grade" aria-describedby="gradeEng"></p>
+									  </div>
+									</div>
+								</td>
+							</tr>
+
+							<tr>
+								<th>Mathematics</th>
+								<td>
+									<div class="row g-3 align-items-center ">
+								  		<div class="col-auto">
+									    <input type="text" id="scoreMaths" class="form-control mx-5 score" aria-describedby="scoreMaths" onchange="gradeSheet(true)">
+									  </div>
+									</div>
+								</td>
+								<td>
+									<div class="row g-3 align-items-center justify-content-center">
+								  		<div class="col-auto">
+								  			<p id="gradeEng" class="form-control mx-5 grade" aria-describedby="gradeMaths"></p>
+									  </div>
+									</div>
+								</td>
+							</tr>
+
+							<tr>
+								<th>Chemistry</th>
+								<td>
+									<div class="row g-3 align-items-center">
+								  		<div class="col-auto">
+									    <input type="text" id="scoreChem" class="form-control mx-5 score" aria-describedby="scoreChem" onchange="gradeSheet(true)">
+									  </div>
+									</div>
+								</td>
+								<td>
+									<div class="row g-3 align-items-center justify-content-center">
+								  		<div class="col-auto">
+								  			<p id="gradeEng" class="form-control mx-5 grade" aria-describedby="gradeChem"></p>
+									  </div>
+									</div>
+								</td>
+							</tr>
+
+							<tr>
+								<th>Biology</th>
+								<td>
+									<div class="row g-3 align-items-center">
+								  		<div class="col-auto">
+									    <input type="text" id="scoreBio" class="form-control mx-5 score" aria-describedby="scoreBio" onchange="gradeSheet(true)">
+									  </div>
+									</div>
+								</td>
+								<td>
+									<div class="row g-3 align-items-center justify-content-center">
+								  		<div class="col-auto">
+								  			<p id="gradeEng" class="form-control mx-5 grade" aria-describedby="gradeBio"></p>
+									  </div>
+									</div>
+								</td>
+							</tr>
+
+							<tr>
+								<th>French</th>
+
+								<td>
+									<div class="row g-3 align-items-center">
+								  		<div class="col-auto">
+									    <input type="text" id="scoreFre" class="form-control mx-5 score" aria-describedby="scoreFre" onchange="gradeSheet(true)">
+									  </div>
+									</div>
+								</td>
+								<td>
+									<div class="row g-3 align-items-center justify-content-center">
+								  		<div class="col-auto">
+								  			<p id="gradeEng" class="form-control mx-5 grade" aria-describedby="gradeFre"></p>
+									  </div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>	
+				<button class="btn btn-success" id="butin" onclick="gradeSheet()">Get Result</button>	
+				<div>
+				<div class="row com mt-5">
+					<div class="col-auto com">
+						<h3>Total</h3>
+						<h1 id="total"></h1>
+						<hr>
+					</div>
+				</div>
+				<div class="row com">
+					<div class="col-auto com">
+						<h3>Average</h3>
+						<h1 id="average"></h1>
+						<hr>
+					</div>
+				</div>
+				<div class="row com mb-5">
+					<div class="col-auto com">
+						<h3>Remark</h3>
+						<div class="remark d-flex">
+							<div>
+								<h1 id ="remark"></h1>
+							</div>
+							<div>
+								<img class="img-fluid col-6" id="image" src="">
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>		
+			</div>
+
+
+			
+		</body>
+		<script>
+
+/*  ============= Extracting the input and converting all to number ============= */
+
+
+				// var score_received = document.getElementsByClassName('score');
+
+				// var score_to_num = [];
+
+				// for (var i = 0; i < score_received.length; i++){
+
+				// 	score_to_num.push(Number(score_received[i].value));
+
+				// };
+
+					// console.log(score_to_num[0])
+
+					// document.write(score_to_num[0])
+
+
+/*  ==================== Using the extractions in the functions ================= */
+
+		function gradeSheet(change){
+
+				var score = document.getElementsByClassName('score');
+
+				var grade = document.getElementsByClassName('grade');
+
+				var subject = ['English', 'Mathematics', 'Chemistry', 'Biology', 'French'];
+
+
+				function inputValidate(){
+
+
+					for(i = 0; i < score.length; i++){
+
+						if (score[i].value <= 0 ) {
+
+							alert('input field for ' +subject[i]+ ' cannot be empty')
+
+							score[i].style = 'border : 2px solid red;';}
+
+						else {
+								score[i].style = 'border : 2px solid skyblue';
+
+							}
+					}
+				};
+
+					inputValidate()
+			
+
+			
+
+				function grade_show(){
+ 
+
+					for(i = 0; i < score.length; i++){
+
+						if (score[i].value < 0) 
+
+						{grade[i].innerHTML = ''}
+
+						else if (score[i].value >= 0 && score[i].value < 40) 
+
+						{grade[i].innerHTML = 'F'
+							grade[i].style.color = 'darkred'}
+
+					 	else if(score[i].value >= 40 && score[i].value < 45)
+
+					 		{grade[i].innerHTML = 'E'
+					 			grade[i].style.color = 'red'}
+
+					 	else if(score[i].value >= 45 && score[i].value < 50)
+
+					 		{grade[i].innerHTML = 'D'
+					 		grade[i].style.color = 'orange'}
+
+					 	else if(score[i].value >= 50 && score[i].value < 60)
+
+					 		{grade[i].innerHTML = 'C'
+					 		grade[i].style.color = 'midnightblue'}
+
+					 	else if(score[i].value >= 60 && score[i].value <= 69)
+
+					 		{grade[i].innerHTML = 'B'
+					 		grade[i].style.color = 'green'}
+
+					 	else {grade[i].innerHTML = 'A'
+					 			grade[i].style.color = 'green'}
+
+
+					}
+				}
+
+				grade_show()
+
+
+				sum_total = 0
+
+		function score_total(){
+					for(j = 0; j < score.length; j++){
+
+					 	sum_total = sum_total + Number(score[j].value)
+					 	document.getElementById('total').innerHTML = sum_total
+
+					 	average = sum_total/score.length
+					 	document.getElementById('average').innerHTML = average
+
+					 	if (average > 50){
+					 	document.getElementById('remark').innerHTML = 'Passed!'
+					 	document.getElementById('remark').style.color = 'lightgreen'
+					 	document.getElementById('image').src = 'happiness.png'
+					 	}
+					 	else{
+					 		document.getElementById('remark').innerHTML = 'Failed!'
+					 		document.getElementById('remark').style.color = 'red'
+					 		document.getElementById('image').src = 'sad-face.png'
+					 	}
+				}
+
+				
+			}
+				 score_total()
+				
+			}
+
+
+			counter = 0
+			var button = document.getElementById('butin').value
+			function button(){
+				for(i = 0; i < button.length; i++){
+					counter++
+					inputValidate()
+					grade_show()
+					score_total
+				}
+			}
+
+			console.log(button)
+
+			
+
+				
+				
+		</script>
+</html>
+
